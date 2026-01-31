@@ -21,32 +21,44 @@ function ParallaxImage({ project, setSelectedProject }) {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]) // Gentle parallax
 
   return (
-    <div 
+    <motion.div
       ref={ref}
-      style={{ 
-        display: 'flex', 
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+      viewport={{ once: true, margin: "-100px" }}
+      style={{
+        display: 'flex',
         justifyContent: project.align === 'center' ? 'center' : (project.align === 'left' ? 'flex-start' : 'flex-end'),
         padding: '0 5vw',
         marginBottom: '15vh'
       }}
     >
-      <div 
+      <motion.div
         style={{ width: project.align === 'center' ? '90vw' : '70vw', cursor: 'zoom-in', position: 'relative' }}
         onClick={() => setSelectedProject(project)}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.4 }}
       >
         <div style={{ overflow: 'hidden', height: '80vh' }}>
-          <motion.img 
+          <motion.img
             style={{ y, scale: 1.1, width: '100%', height: '100%', objectFit: 'cover' }}
-            src={project.img} 
-            alt={project.title} 
+            src={project.img}
+            alt={project.title}
           />
         </div>
-        <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+          style={{ marginTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}
+        >
            <h3 style={{ fontSize: '2rem', fontWeight: 400 }}>{project.title}</h3>
            <span style={{ fontSize: '0.9rem', color: '#666', textTransform: 'uppercase' }}>{project.type}</span>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -56,11 +68,17 @@ export default function Gallery() {
   return (
     <>
       <section id="gallery" style={{ padding: '15vh 0', backgroundColor: '#fcfcfc' }}>
-        <div style={{ padding: '0 5vw 8rem' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          style={{ padding: '0 5vw 8rem' }}
+        >
            <h2 style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', textAlign: 'left', textTransform: 'uppercase', lineHeight: 0.9 }}>
             Selected<br/><span style={{ paddingLeft: '4rem', color: '#888' }}>Works</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div>
           {projects.map((project) => (
