@@ -50,28 +50,30 @@ export default function Testimonials() {
         </h2>
       </div>
 
-      <motion.div 
-        style={{ 
+      <motion.div
+        className="testimonials-grid"
+        style={{
           skewY, // Applies the skew to the whole grid container
           transformOrigin: "center center",
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: '2rem',
           maxWidth: '1400px',
           margin: '0 auto'
         }}
       >
         {reviews.map((review, i) => (
-          <motion.div 
+          <motion.div
             key={review.id}
+            className="testimonial-card"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             viewport={{ once: true }}
-            style={{ 
+            style={{
               gridColumn: review.size === 'large' ? 'span 2' : 'span 1',
-              backgroundColor: '#f5f5f5', 
-              padding: '3rem', 
+              backgroundColor: '#f5f5f5',
+              padding: '3rem',
               borderRadius: '2px', // Minimalist rounded
               display: 'flex',
               flexDirection: 'column',

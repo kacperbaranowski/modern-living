@@ -25,7 +25,7 @@ export default function Contact() {
          </h2>
        </motion.div>
 
-       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 2fr', gap: '5rem', alignItems: 'start' }}>
+       <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) 2fr', gap: '5rem', alignItems: 'start' }}>
           <div>
             <h3 style={{ textTransform: 'uppercase', marginBottom: '1rem', fontSize: '0.9rem', letterSpacing: '0.1em' }}>Direct Contact</h3>
             <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>hello@modernliving.com</p>

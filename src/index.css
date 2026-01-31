@@ -51,3 +51,27 @@ html.lenis, html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Testimonials/Voices section */
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .testimonial-card {
+    grid-column: span 1 !important;
+    min-height: 250px !important;
+    padding: 2rem !important;
+  }
+
+  .testimonial-card p:first-child {
+    font-size: 1.25rem !important;
+  }
+
+  /* Contact section */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+}
