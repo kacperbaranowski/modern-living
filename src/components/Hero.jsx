@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import heroImg from '../assets/hero.png'
+import exteriorImg from '../assets/exterior.jpeg'
 
 export default function Hero() {
   const ref = useRef(null)
@@ -9,9 +9,9 @@ export default function Hero() {
     offset: ["start start", "end start"]
   })
 
-  // Zoom into the window (center-right where the large windows are)
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 2.5])
-  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"])
+  // Zoom into the window (right side where the large window is)
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 3])
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"])
 
   // Text fades out quickly
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
@@ -40,12 +40,12 @@ export default function Hero() {
             height: '100%',
             scale,
             y: imgY,
-            transformOrigin: '65% 45%', // Zoom towards the large window (center-right)
+            transformOrigin: '75% 50%', // Zoom towards the large window on the right
             zIndex: 0
           }}
         >
           <img
-            src={heroImg}
+            src={exteriorImg}
             alt="Modern house in forest"
             style={{
               width: '100%',
